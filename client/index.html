@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxStay - Premium Hotel Bookings</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <div class="logo">Comfort Zone</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#hotels">Hotels</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero reveal" id="home">
+      <div class="hero-content reveal">
+        <h1>Find Your Perfect Stay</h1>
+        <p>Unleash amazing hotels at the best prices worldwide</p>
+      </div>
+    </section>
+
+    <!-- Search Box -->
+    <!-- Glassmorphic Search Box (Inside Hero Section) -->
+    <div class="hero-search-wrapper reveal">
+      <form class="hero-search-box" id="searchForm">
+        <div class="search-field">
+          <label>Destination</label>
+          <input type="text" placeholder="Where are you heading?" required />
+        </div>
+
+        <div class="search-field">
+          <label>Check-in</label>
+          <input type="date" required />
+        </div>
+
+        <div class="search-field">
+          <label>Check-out</label>
+          <input type="date" required />
+        </div>
+
+        <div class="search-field">
+          <label>Guests</label>
+          <select required>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4+ Guests</option>
+          </select>
+        </div>
+
+        <button type="submit" class="hero-search-btn">Search Hotels</button>
+      </form>
+    </div>
+
+    <!-- Hotels Section -->
+    <section class="hotels-section" id="hotels">
+      <div class="container">
+        <h2 class="section-title reveal" style="color: whitesmoke">
+          Featured Hotels
+        </h2>
+
+        <div class="hotels-grid reveal" id="hotelsGrid">
+          <!-- Hotel cards -->
+        </div>
+      </div>
+    </section>
+    <!-- Why Choose Us Section -->
+    <section class="why-us-section reveal" id="about">
+      <div class="container">
+        <h2 class="section-title">Why Choose Comfort Zone?</h2>
+
+        <div class="why-us-grid">
+          <div class="why-card reveal">
+            <div class="why-icon">⭐</div>
+            <h3>Top-Rated Hotels</h3>
+            <p>
+              We curate only the best premium hotels so you always get the
+              perfect stay.
+            </p>
+          </div>
+
+          <div class="why-card reveal">
+            <div class="why-icon">💰</div>
+            <h3>Best Price Guarantee</h3>
+            <p>
+              Get exclusive deals and the lowest price across hundreds of
+              destinations.
+            </p>
+          </div>
+
+          <div class="why-card reveal">
+            <div class="why-icon">🛎️</div>
+            <h3>24/7 Support</h3>
+            <p>
+              Our team is ready to help you anytime—before, during, and after
+              your stay.
+            </p>
+          </div>
+
+          <div class="why-card reveal">
+            <div class="why-icon">⚡</div>
+            <h3>Instant Booking</h3>
+            <p>
+              No delays. Book your rooms instantly with a seamless experience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+      <div class="modal-content">
+        <button class="close-modal" id="closeModal">&times;</button>
+        <h2 id="modalHotelName">Hotel Name</h2>
+        <form class="booking-form" id="bookingForm">
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email Address" required />
+          <input type="tel" placeholder="Phone Number" required />
+          <input type="date" placeholder="Check-in Date" required />
+          <input type="date" placeholder="Check-out Date" required />
+          <select required>
+            <option value="">Number of Guests</option>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4+ Guests</option>
+          </select>
+          <select required>
+            <option value="">Room Type</option>
+            <option value="standard">Standard Room</option>
+            <option value="deluxe">Deluxe Room</option>
+            <option value="suite">Suite</option>
+          </select>
+          <textarea placeholder="Special Requests (Optional)"></textarea>
+          <button type="submit" class="submit-booking">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="reveal" id="contact">
+      <div class="footer-content">
+        
+
+        <div class="footer-section reveal">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#hotels">Hotels</a></li>
+            <li><a href="contact_form.html">Contact Us</a></li>
+            <li><a href="#terms">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section reveal">
+          <h3>Contact</h3>
+          <ul>
+            <li>🌐 comfortzone.com</li>
+            <li>📞 +XX (XXX) 1XX-XXX7</li>
+            <li>📍 XXX Hotel Road, XX 10001</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom reveal">
+        <p>&copy; 2025 Comfort Zone. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      const revealElements = document.querySelectorAll(".reveal");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      revealElements.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
