@@ -1,90 +1,93 @@
+/* ===========================
+   Base & Layout
+   =========================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  background: #1a1a1a;
+  background: #111;
   color: #f0f0f0;
 }
 
-/* Header */
-/* Header - Dark Glassmorphism */
+/* Header - Glass */
 header {
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  background: rgba(0, 0, 0, 0.45); /* dark translucent */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 1rem 0;
+  padding: 14px 0;
 }
-
-/* Keep layout same */
 nav {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  justify-content: space-between;
+  padding: 0 1.5rem;
 }
-
-/* Logo */
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
 }
-
-/* NAV LINKS */
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.25rem;
   list-style: none;
 }
-
 .nav-links a {
-  position: relative;
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   font-weight: 500;
+  position: relative;
   padding-bottom: 4px;
 }
-
-/* Gradient Underline Animation */
 .nav-links a::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 0%;
   height: 2px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
-  transition: width 0.3s ease-in-out;
+  width: 0%;
+  background: linear-gradient(90deg, #71b280, #134e5e);
+  transition: width 0.28s;
 }
-
 .nav-links a:hover::after {
   width: 100%;
 }
 
-/* Hero Section */
-/* === HERO IMAGE POSITIONING === */
+/* HERO */
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1920&q=80");
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1920&q=80")
+      center/cover no-repeat;
   height: 650px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
+.hero-content {
+  text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+}
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.hero-content p {
+  color: #dfe7ea;
+  opacity: 0.95;
+}
 
-/* WRAPPER TO HOLD SEARCH BOX INSIDE IMAGE */
+/* HERO SEARCH area */
 .hero-search-wrapper {
   position: absolute;
   bottom: 40px;
@@ -92,552 +95,270 @@ nav {
   display: flex;
   justify-content: center;
 }
-
-/* === PREMIUM GLASSMORPHISM SEARCH BOX === */
 .hero-search-box {
   display: flex;
   align-items: flex-end;
-  gap: 22px;
-  padding: 28px 32px;
-  border-radius: 22px;
-
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-
-  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
-  animation: fadeUp 0.5s ease-out;
+  gap: 18px;
+  padding: 22px 26px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 14px 40px rgba(2, 6, 23, 0.6);
+  width: 76%;
+  max-width: 1100px;
 }
-
-/* LABELS */
-.hero-search-box label {
-  display: block;
+.search-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.search-field label {
   margin-bottom: 6px;
-  color: #ffffff;
-  font-size: 15px;
+  font-size: 14px;
+  color: #e6eef0;
   font-weight: 600;
 }
-
-/* INPUTS / SELECTS */
-.hero-search-box input,
-.hero-search-box select {
-  width: 180px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  background: rgba(27, 19, 180, 0.08);
-  color: white;
-  outline: none;
+.search-field input,
+.search-field select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
   font-size: 14px;
-  transition: 0.25s ease;
 }
-input::placeholder {
-  color: white;
-}
-
-/* FOCUSED INPUT EFFECT */
-.hero-search-box input:focus,
-.hero-search-box select:focus {
-  border-color: #6b8eff;
-  box-shadow: 0 0 10px rgba(107, 142, 255, 0.4);
-}
-
-/* SEARCH BUTTON */
 .hero-search-btn {
-  padding: 14px 26px;
-  background: linear-gradient(135deg, #6b8dff, #805bf6);
+  padding: 12px 22px;
+  border-radius: 12px;
   border: none;
-  border-radius: 14px;
-  color: white;
-  font-weight: 700;
   cursor: pointer;
-  transition: 0.3s ease;
+  background: linear-gradient(135deg, #71b280, #134e5e);
+  color: #071014;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(7, 16, 20, 0.45);
 }
 
-.hero-search-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(107, 141, 255, 0.5);
-}
-
-/* Fade Up Animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* FadeUp animation */
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Container */
+/* Container & titles */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
-
-/* Hotels Section */
-.hotels-section {
-  padding: 4rem 0;
-}
-
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  color: #333;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #fff;
 }
 
+/* Hotels grid */
 .hotels-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.5rem;
   margin-bottom: 3rem;
 }
 
-/* Modern Hotel Cards */
-/* ============================
-   DARK MODE HOTEL CARDS
-   ============================ */
-
-/* HOTEL CARD — PREMIUM DESIGN */
+/* =========================
+   HOTEL CARD (WHY-CHOOSE style but with image)
+   ========================= */
 .hotel-card {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 160px 1fr; /* image left, content right */
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
   overflow: hidden;
-  transition: transform 0.35s ease, box-shadow 0.35s ease,
-    border-color 0.35s ease;
-  padding-bottom: 12px;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s;
 }
-
-/* Hover Glow */
 .hotel-card:hover {
-  transform: translateY(-12px);
-  border-color: rgba(130, 150, 255, 0.55);
-  box-shadow: 0 20px 45px rgba(130, 150, 255, 0.25);
+  transform: translateY(-10px);
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.7);
+  border-color: rgba(113, 178, 128, 0.36);
 }
 
-/* Hotel Image */
-.hotel-card img {
+/* Image area (left) */
+.hotel-img-wrap {
   width: 100%;
-  height: 230px;
+  min-height: 140px;
+  max-height: 220px;
+  overflow: hidden;
+  background: #0b0b0b;
+  display: block;
+}
+.hotel-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: #111;
+  display: block;
+  transition: transform 0.6s ease;
 }
 
-/* CONTENT */
-.hotel-card-content {
-  padding: 20px 22px;
-  color: #e5e7ff;
+/* Content area */
+.hotel-info {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-
-/* Name */
-.hotel-card-content h3 {
-  font-size: 1.35rem;
-  font-weight: 700;
+.hotel-name {
+  font-size: 1.15rem;
   color: #fff;
+  font-weight: 700;
   margin-bottom: 6px;
 }
-
-/* Location */
 .hotel-location {
   font-size: 0.95rem;
-  opacity: 0.85;
+  color: #cfe7db;
   margin-bottom: 10px;
-}
-
-/* Features Row */
-.hotel-features {
-  margin-top: 6px;
-  margin-bottom: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.hotel-features .feature {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 0.75rem;
   opacity: 0.9;
 }
-
-/* Rating */
+.hotel-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.feature {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  color: #eaf6ef;
+}
 .hotel-rating {
-  font-size: 0.95rem;
-  margin-bottom: 14px;
   color: #ffd966;
+  margin-bottom: 12px;
+  font-weight: 700;
 }
 
-/* PRICE */
+/* price & book */
 .hotel-price {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
+  gap: 12px;
+  margin-top: 8px;
 }
-
 .price {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #b8c2ff;
-}
-
-/* PREMIUM BOOK BUTTON */
-.book-btn {
-  width: 100%;
-  padding: 13px;
-  text-align: center;
-  background: linear-gradient(135deg, #6d83ff, #9a6dff);
-  border: none;
-  color: white;
   font-size: 1.05rem;
-  font-weight: 600;
-  border-radius: 14px;
-
-  box-shadow: 0 8px 20px rgba(110, 100, 255, 0.35);
-
+  font-weight: 800;
+  color: #bfe8c9;
+}
+.book-btn {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-weight: 700;
+  background: linear-gradient(135deg, #71b280, #134e5e);
+  color: #041014;
+  box-shadow: 0 8px 24px rgba(7, 16, 20, 0.45);
+}
+.book-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(7, 16, 20, 0.55);
 }
 
-.book-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 35px rgba(110, 100, 255, 0.55);
-  background: linear-gradient(135deg, #7c90ff, #b47bff);
+/* image scale on hover */
+.hotel-card:hover .hotel-img {
+  transform: scale(1.06);
+}
+
+/* Why-choose cards (unchanged look) */
+.why-us-section {
+  padding: 60px 0;
+  background: #0f0f17;
+  text-align: center;
+}
+.why-us-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+.why-card {
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  transition: transform 0.28s ease;
+}
+.why-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 36px rgba(2, 6, 23, 0.6);
+}
+.why-icon {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: #8aa0ff;
+}
+.why-card h3 {
+  color: #fff;
+  margin-bottom: 8px;
+}
+.why-card p {
+  color: #cfcfe8;
+  line-height: 1.5;
 }
 
 /* Modal */
 .modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.7);
-  z-index: 2000;
   align-items: center;
   justify-content: center;
+  z-index: 2000;
 }
-
 .modal.active {
   display: flex;
 }
-
 .modal-content {
-  background: white;
-  padding: 2rem;
+  background: #fff;
+  color: #111;
+  padding: 20px;
   border-radius: 10px;
-  max-width: 600px;
-  width: 90%;
+  width: 92%;
+  max-width: 640px;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: auto;
   position: relative;
 }
-
 .close-modal {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #666;
+  top: 10px;
+  right: 12px;
+  font-size: 24px;
+  border: none;
   background: none;
-  border: none;
-}
-
-.close-modal:hover {
-  color: #333;
-}
-
-.booking-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.booking-form input,
-.booking-form select,
-.booking-form textarea {
-  padding: 0.8rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.booking-form textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-.submit-booking {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 1rem;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: transform 0.3s;
 }
 
-.submit-booking:hover {
-  transform: translateY(-2px);
-}
-
-/* Why Choose Us – DARK MODE */
-.why-us-section {
-  padding: 80px 0;
-  background: #0f0f17; /* deep hotel dark theme */
-  text-align: center;
-}
-
-.why-us-section .section-title {
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-/* Grid */
-.why-us-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-}
-
-/* Card */
-.why-card {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s;
-}
-
-.why-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(102, 126, 234, 0.6); /* your theme color */
-  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.25);
-}
-
-/* Icon */
-.why-icon {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  color: #8aa0ff; /* theme highlight */
-}
-
-/* Title */
-.why-card h3 {
-  margin-bottom: 10px;
-  color: #e5e5ff;
-  font-size: 1.4rem;
-}
-
-/* Text */
-.why-card p {
-  color: #cfcfe8;
-  line-height: 1.55;
-}
-
-/* Professional Dark Footer */
-footer {
-  background: #0f0f0f;
-  padding: 4rem 0 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 3rem;
-}
-
-.footer-section h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.footer-section ul li {
-  margin-bottom: 0.7rem;
-}
-
-.footer-section a {
-  color: #b4b4b4;
-  transition: 0.3s;
-}
-
-.footer-section a:hover {
-  color: #ffffff;
-}
-
-/* Footer Bottom */
-.footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
-  font-size: 0.9rem;
-  color: #7d7d7d;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  margin-top: 3rem;
-}
-
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-
-  .search-form {
-    grid-template-columns: 1fr;
-  }
-
-  .nav-links {
-    gap: 1rem;
-  }
-}
-/* -------------------------------
-   1. HAMBURGER MENU (MOBILE)
---------------------------------*/
-.hamburger {
-  display: none;
-  width: 30px;
-  height: 22px;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 1200;
-}
-
-.hamburger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: #ffffff;
-  border-radius: 5px;
-  transition: 0.3s ease;
-}
-
-/* Animate into X */
-.hamburger.active span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-}
-
-/* Mobile Menu */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(15px);
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 2rem 0;
-    transform: translateY(-200%);
-    transition: transform 0.4s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .nav-links.open {
-    transform: translateY(0);
-  }
-
-  .nav-links a {
-    font-size: 1.2rem;
-  }
-}
-
-
-/* ---------- image slider infinite ---------- */
-.auto-slider-section {
-  padding: 40px 0;
-  text-align: center;
-}
-
-.slider-heading {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 25px;
-  color: #222;
-}
-
-/* Slider container */
+/* slider & footer - keep your existing style but tuned colors */
 .slider {
   height: 250px;
   width: 100%;
   overflow: hidden;
   position: relative;
+  margin: 32px 0;
 }
-
-/* Track that moves */
 .slide-track {
   display: flex;
-  width: calc(250px * 20); /* 10 images × 2 loops */
+  width: calc(250px * 20);
   animation: scroll 40s linear infinite;
+  gap: 12px;
 }
-
-/* Images */
 .slide-track img {
   height: 250px;
   width: 250px;
   object-fit: cover;
-  margin: 0 10px;
-  border-radius: 16px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.4s ease;
+  border-radius: 12px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
 }
-
-/* Hover effect */
-.slide-track img:hover {
-  transform: scale(1.05);
-}
-
-/* Animation Keyframes */
 @keyframes scroll {
   from {
     transform: translateX(0);
@@ -647,272 +368,342 @@ footer {
   }
 }
 
-/* ===========================================
-   FULL RESPONSIVE FIX — UNIVERSAL MOBILE FIXES
-   =========================================== */
-
-@media (max-width: 768px) {
-
-  /* NAVBAR */
-  nav {
-    padding: 0 1rem;
+/* Responsive */
+@media (max-width: 920px) {
+  .hotel-card {
+    grid-template-columns: 1fr;
   }
-
-  .logo {
-    font-size: 1.4rem;
+  .hotel-img-wrap {
+    min-height: 180px;
+    max-height: 260px;
   }
-
-  /* HERO SECTION */
-  .hero {
-    height: 78vh;
-    background-position: center;
-    padding: 0 10px;
-    text-align: center;
-  }
-
-  .hero-content h1 {
-    font-size: 1.9rem;
-    margin-bottom: 10px;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-
-  /* RESPONSIVE SEARCH BOX */
   .hero-search-box {
-    flex-direction: column;
     width: 92%;
-    padding: 18px 20px;
+    padding: 16px;
     gap: 12px;
+    flex-direction: column;
+    align-items: stretch;
   }
-
-  .hero-search-box input,
-  .hero-search-box select {
-    width: 100%;
-  }
-
-  .hero-search-btn {
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  /* HOTELS GRID */
-  .hotels-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .hotel-card img {
-    height: 200px;
-  }
-
-  .hotel-card-content {
-    padding: 18px;
-  }
-
-  .price {
-    font-size: 1.1rem;
-  }
-
-  .book-btn {
-    height: 45px;
-    font-size: 1rem;
-  }
-
-  /* WHY CHOOSE US */
-  .why-us-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .why-card {
-    padding: 22px;
-  }
-
-  .why-icon {
-    font-size: 2.4rem;
-  }
-
-  /* SLIDER */
-  .slider {
-    height: 180px;
-  }
-
-  .slide-track {
-    width: calc(180px * 20);
-  }
-
-  .slide-track img {
-    height: 170px;
-    width: 170px;
-    margin: 0 6px;
-  }
-
-  /* FOOTER */
-  .footer-content {
-    grid-template-columns: 1fr;
-    text-align: center;
+  .hero-content h1 {
+    font-size: 2rem;
   }
 }
-
-
-/* ============================
-   SUPER SMALL DEVICES FIX
-   (iPhone SE / old Android)
-   ============================ */
-@media (max-width: 430px) {
-
+@media (max-width: 420px) {
   .hero {
     height: 65vh;
   }
-
-  .hero-content h1 {
-    font-size: 1.6rem;
-  }
-
   .hero-search-box {
     width: 95%;
+    padding: 14px;
   }
-
-  .slider {
-    height: 150px;
-  }
-
-  .slide-track {
-    width: calc(150px * 20);
-  }
-
   .slide-track img {
-    width: 150px;
     height: 150px;
-    margin: 0 4px;
+    width: 150px;
   }
 }
+/* ----------------------------
+  SEARCH BUTTON / MOBILE FIXES
+  Paste this at the end of styles.css
+  ---------------------------- */
 
-/* 3D Slider */
-.slider3d-section {
-  padding: 80px 0;
-  display: flex;
-  justify-content: center;
-}
-
-.slider3d-container {
-  position: relative;
-  width: 420px;
-  height: 300px;
-  transform-style: preserve-3d;
-  animation: rotate3D 18s linear infinite;
-}
-
-.slider3d-container img {
-  position: absolute;
-  width: 260px;
-  height: 160px;
-  object-fit: cover;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 15px;
-}
-
-@keyframes rotate3D {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
-}
-/* Make search box responsive on all screens */
-.hero-search-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: -80px; /* keeps it inside hero image */
-}
-
-.hero-search-box {
-  display: flex;
-  align-items: flex-end;
-  gap: 22px;
-  padding: 25px;
-  width: 75%;
-  max-width: 1100px;
-
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-
-  transition: 0.3s ease;
-}
-
-.hero-search-box:hover {
-  background: rgba(255, 255, 255, 0.14);
-}
-.search-field {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.search-field input,
-.search-field select {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
-  font-size: 15px;
-}
-
-.search-field label {
-  margin-bottom: 6px;
-  font-size: 14px;
-  color: #dcdcff;
-}
+/* Restore button layout + hover animation (desktop & tablet) */
 .hero-search-btn {
-  padding: 14px 22px;
-  white-space: nowrap;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  border-radius: 12px;
-  font-size: 15px;
+  /* keep as inline-flex so we can center content and keep hover */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* prevent button from shrinking inside the flex row */
+  flex: 0 0 auto;
+
+  /* visual polish & restore hover transition */
+  transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1),
+    box-shadow 0.28s ease, background 0.2s ease;
+  will-change: transform, box-shadow;
   cursor: pointer;
-  border: none;
-  transition: 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.hero-search-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 22px rgba(118, 75, 162, 0.35);
+/* stronger hover (desktop) */
+@media (min-width: 921px) {
+  .hero-search-btn:hover,
+  .hero-search-btn:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(7, 16, 20, 0.45);
+    filter: brightness(1.03);
+  }
+  .hero-search-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(7, 16, 20, 0.35);
+  }
 }
-/* MOBILE FIX */
-/* FINAL SEARCH BOX MOBILE FIX */
-@media (max-width: 768px) {
 
+/* Ensure button is full-width and readable on small screens */
+@media (max-width: 920px) {
+  .hero-search-btn {
+    width: 100% !important;
+    flex: 0 0 auto;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 15px;
+  }
+}
+
+/* Hero / Search overlap fix on mobile:
+   Reserve extra space inside the hero so the search box can sit comfortably
+   and add a small top-gap to the hotels section to avoid visual merge. */
+@media (max-width: 920px) {
+  /* Add bottom padding to hero so search box doesn't overlap following sections */
+  .hero {
+    /* increase padding-bottom to make room for the search card */
+    padding-bottom: 180px; /* tweak up/down if needed */
+  }
+
+  /* Position wrapper consistently (keeps search inside hero) */
+  .hero-search-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px; /* vertical offset from bottom of hero */
+    display: flex;
+    justify-content: center;
+    z-index: 80;
+    pointer-events: none; /* allow children to capture clicks, keeps wrapper inert */
+  }
+
+  /* Make the search box active for pointer events and full-width */
   .hero-search-box {
-    flex-direction: column;
-    width: 90%;
-    padding: 20px;
-    gap: 16px;
+    pointer-events: auto;
+    width: 92%;
+    max-width: 980px;
+    margin: 0 auto;
+    transform: none !important;
+    position: relative;
+    z-index: 90;
+    box-shadow: 0 18px 46px rgba(2, 6, 23, 0.6);
+    background: rgba(6, 8, 10, 0.26);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
 
-  .search-field {
-    width: 100%;
-  }
-
+  /* Keep inputs big & tappable */
   .hero-search-box input,
   .hero-search-box select {
-    width: 100%;
     padding: 14px;
     font-size: 15px;
   }
 
-  .hero-search-btn {
-    width: 100%;
-    padding: 16px;
-    font-size: 16px;
-    margin-top: 6px;
+  /* make sure search fields are stacked nicely */
+  .hero-search-box {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  /* prevent the hotels section from visually colliding */
+  .hotels-section {
+    margin-top: 1.75rem;
+    padding-top: 0.5rem;
   }
 }
 
+/* Extra small screens tweak */
+@media (max-width: 420px) {
+  .hero {
+    padding-bottom: 150px;
+  }
+  .hero-search-box {
+    width: 95%;
+    padding: 12px;
+    gap: 10px;
+  }
+  .hero-search-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* Accessibility: keyboard focus ring for button */
+.hero-search-btn:focus {
+  outline: 3px solid rgba(113, 178, 128, 0.18);
+  outline-offset: 3px;
+}
+/* ---------------------------
+  FINAL SEARCH + HAMBURGER FIX
+  Paste at end of styles.css
+   - prevents overlap
+   - keeps button responsive
+   - restores hamburger -> X animation
+----------------------------*/
+
+/* ensure box-sizing everywhere for consistent sizing */
+* { box-sizing: border-box; }
+
+/* Button responsive & hover polish */
+.hero-search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;              /* don't shrink in desktop row */
+  min-width: 140px;            /* prevents escaping when resizing inspector */
+  transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s ease, background .18s;
+  will-change: transform, box-shadow;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Desktop hover */
+@media (min-width: 921px) {
+  .hero-search-btn:hover,
+  .hero-search-btn:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(7,16,20,0.45);
+    filter: brightness(1.03);
+  }
+}
+
+/* Layout safety for search inputs when shrinking */
+.hero-search-box {
+  display: flex;
+  flex-wrap: wrap;             /* allow fields to wrap instead of overflow */
+  gap: 12px;
+  align-items: flex-end;
+}
+.hero-search-box .search-field { min-width: 140px; flex: 1 1 140px; }
+
+/* MOBILE: make search box sit ABOVE following content without overlapping */
+@media (max-width: 920px) {
+
+  /* reserve larger vertical space inside hero so the search card sits comfortably */
+  .hero { padding-bottom: 230px; } /* increase if still overlapping on some devices */
+
+  /* position wrapper inside hero and center the card */
+  .hero-search-wrapper {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    pointer-events: none; /* wrapper inert */
+    z-index: 80;
+  }
+
+  /* make the card itself interactive and full width */
+  .hero-search-box {
+    pointer-events: auto;            /* enable clicks */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 980px;
+    padding: 16px;
+    gap: 12px;
+    border-radius: 12px;
+    flex-direction: column;         /* stack fields on mobile */
+    align-items: stretch;
+    z-index: 90;
+    box-shadow: 0 18px 46px rgba(2,6,23,0.6);
+    background: rgba(6,8,10,0.26);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  /* fields and button full width on mobile */
+  .hero-search-box .search-field,
+  .hero-search-box input,
+  .hero-search-box select,
+  .hero-search-btn {
+    width: 100% !important;
+    flex: none;
+  }
+
+  /* ensure hotels section has breathing room below the search card */
+  .hotels-section { margin-top: 1.8rem; padding-top: 0.6rem; }
+
+  /* slightly smaller button padding on small devices */
+  .hero-search-btn { padding: 12px 14px; font-size: 15px; min-width: 0; }
+}
+
+/* extra small devices */
+@media (max-width:420px) {
+  .hero { padding-bottom: 170px; }
+  .hero-search-box { padding: 12px; gap: 10px; }
+  .hero-search-btn { padding: 11px; font-size: 14px; }
+}
+
+/* -------------------------
+  Restore/ensure hamburger animation
+--------------------------*/
+.hamburger { display:flex; cursor:pointer; width:34px; height:24px; flex-direction:column; justify-content:space-between; z-index:1200; }
+.hamburger span { display:block; height:3px; width:100%; background:#fff; border-radius:4px; transition: transform .28s ease, opacity .18s ease; transform-origin:center; }
+
+/* active -> X */
+.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* mobile nav open state */
+.nav-links { transition: transform .32s ease, opacity .28s ease; }
+.nav-links.open { transform: translateY(0) !important; opacity:1; }
+/* -----------------------------
+ Mobile panel for .nav-links when hamburger is active
+ Paste at end of styles.css
+ ----------------------------- */
+
+@media (max-width: 920px) {
+  /* Base: keep .nav-links hidden off-canvas by default */
+  .nav-links {
+    position: fixed;
+    top: 64px;                 /* slide under header (adjust if header height different) */
+    right: 0;
+    left: 0;
+    height: 35vh;
+    transform: translateY(-120%); /* hidden above view */
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+    padding: 1.25rem;
+    background: linear-gradient(180deg, rgba(6,8,10,0.95), rgba(6,8,10,0.90));
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    z-index: 1150;
+    transition: transform .36s cubic-bezier(.2,.9,.25,1), opacity .28s ease;
+  }
+
+  /* Visible state when .open is applied */
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Layout of links inside panel */
+  .nav-links li {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 1.05rem;
+    text-align: center;
+    color: #e8faf0;
+    border-radius: 10px;
+    margin: 8px 0;
+    background: rgba(255,255,255,0.02);
+    transition: background .18s ease, transform .12s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    background: rgba(255,255,255,0.04);
+    transform: translateY(-3px);
+  }
+
+  /* Small helper: keep the hamburger on top of panel */
+  .hamburger { z-index: 1200; }
+}

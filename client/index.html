@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LuxStay - Premium Hotel Bookings</title>
+    <title>Comfort Zone - Premium Hotel Bookings</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -38,23 +38,23 @@
     <div class="hero-search-wrapper reveal">
       <form class="hero-search-box" id="searchForm">
         <div class="search-field">
-          <label>Destination</label>
-          <input type="text" placeholder="Where are you heading?" required />
+          <label for="destination">Destination</label>
+          <input id="destination" name="destination" type="text" placeholder="Where are you heading?" required />
         </div>
 
         <div class="search-field">
-          <label>Check-in</label>
-          <input type="date" required />
+          <label for="checkin">Check-in</label>
+          <input id="checkin" name="checkin" type="date" required />
         </div>
 
         <div class="search-field">
-          <label>Check-out</label>
-          <input type="date" required />
+          <label for="checkout">Check-out</label>
+          <input id="checkout" name="checkout" type="date" required />
         </div>
 
         <div class="search-field">
-          <label>Guests</label>
-          <select required>
+          <label for="guests">Guests</label>
+          <select id="guests" name="guests" required>
             <option value="1">1 Guest</option>
             <option value="2">2 Guests</option>
             <option value="3">3 Guests</option>
@@ -74,119 +74,102 @@
         </h2>
 
         <div class="hotels-grid reveal" id="hotelsGrid">
-          <!-- Hotel cards -->
+          <!-- Hotel cards will be rendered here -->
         </div>
       </div>
     </section>
 
-    <section class="auto-slider-section">
-      <h2 class="slider-heading" style="color: whitesmoke">
-        Explore Our Hotels
-      </h2>
+    <!-- Why Choose Us Section -->
+    <section class="why-us-section reveal" id="about">
+      <div class="container">
+        <h2 class="section-title">Why Choose Comfort Zone?</h2>
 
-      <!-- Why Choose Us Section -->
-      <section class="why-us-section reveal" id="about">
-        <div class="container">
-          <h2 class="section-title">Why Choose Comfort Zone?</h2>
+        <div class="why-us-grid">
+          <div class="why-card reveal">
+            <div class="why-icon">⭐</div>
+            <h3>Top-Rated Hotels</h3>
+            <p>We curate only the best premium hotels so you always get the perfect stay.</p>
+          </div>
 
-          <div class="why-us-grid">
-            <div class="why-card reveal">
-              <div class="why-icon">⭐</div>
-              <h3>Top-Rated Hotels</h3>
-              <p>
-                We curate only the best premium hotels so you always get the
-                perfect stay.
-              </p>
-            </div>
+          <div class="why-card reveal">
+            <div class="why-icon">💰</div>
+            <h3>Best Price Guarantee</h3>
+            <p>Get exclusive deals and the lowest price across hundreds of destinations.</p>
+          </div>
 
-            <div class="why-card reveal">
-              <div class="why-icon">💰</div>
-              <h3>Best Price Guarantee</h3>
-              <p>
-                Get exclusive deals and the lowest price across hundreds of
-                destinations.
-              </p>
-            </div>
+          <div class="why-card reveal">
+            <div class="why-icon">🛎️</div>
+            <h3>24/7 Support</h3>
+            <p>Our team is ready to help you anytime—before, during, and after your stay.</p>
+          </div>
 
-            <div class="why-card reveal">
-              <div class="why-icon">🛎️</div>
-              <h3>24/7 Support</h3>
-              <p>
-                Our team is ready to help you anytime—before, during, and after
-                your stay.
-              </p>
-            </div>
-
-            <div class="why-card reveal">
-              <div class="why-icon">⚡</div>
-              <h3>Instant Booking</h3>
-              <p>
-                No delays. Book your rooms instantly with a seamless experience.
-              </p>
-            </div>
+          <div class="why-card reveal">
+            <div class="why-icon">⚡</div>
+            <h3>Instant Booking</h3>
+            <p>No delays. Book your rooms instantly with a seamless experience.</p>
           </div>
         </div>
-      </section>
-
-      <!-- Booking Modal -->
-      <div class="modal" id="bookingModal">
-        <div class="modal-content">
-          <button class="close-modal" id="closeModal">&times;</button>
-          <h2 id="modalHotelName">Hotel Name</h2>
-          <form class="booking-form" id="bookingForm">
-            <input type="text" placeholder="Full Name" required />
-            <input type="email" placeholder="Email Address" required />
-            <input type="tel" placeholder="Phone Number" required />
-            <input type="date" placeholder="Check-in Date" required />
-            <input type="date" placeholder="Check-out Date" required />
-            <select required>
-              <option value="">Number of Guests</option>
-              <option value="1">1 Guest</option>
-              <option value="2">2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4">4+ Guests</option>
-            </select>
-            <select required>
-              <option value="">Room Type</option>
-              <option value="standard">Standard Room</option>
-              <option value="deluxe">Deluxe Room</option>
-              <option value="suite">Suite</option>
-            </select>
-            <textarea placeholder="Special Requests (Optional)"></textarea>
-            <button type="submit" class="submit-booking">
-              Confirm Booking
-            </button>
-          </form>
-        </div>
-      </div>
-      <div class="slider">
-        <div class="slide-track">
-          <img src="./assets/hotel-slider1.jpg" alt="" />
-          <img src="./assets/hotel-slider2.jpg" alt="" />
-          <img src="./assets/hotel-slider3.jpg" alt="" />
-          <img src="./assets/hotel-slider4.jpg" alt="" />
-          <img src="./assets/hotel-slider5.jpg" alt="" />
-          <img src="./assets/hotel-slider6.jpg" alt="" />
-          <img src="./assets/hotel-slider7.jpg" alt="" />
-          <img src="./assets/hotel-slider8.jpg" alt="" />
-          <img src="./assets/hotel-slider9.jpg" alt="" />
-          <img src="./assets/hotel-slider10.jpg" alt="" />
-
-          <!-- Duplicate images for infinite loop -->
-
-          <img src="./assets/hotel-slider1.jpg" alt="" />
-          <img src="./assets/hotel-slider2.jpg" alt="" />
-          <img src="./assets/hotel-slider3.jpg" alt="" />
-          <img src="./assets/hotel-slider4.jpg" alt="" />
-          <img src="./assets/hotel-slider5.jpg" alt="" />
-          <img src="./assets/hotel-slider6.jpg" alt="" />
-          <img src="./assets/hotel-slider7.jpg" alt="" />
-          <img src="./assets/hotel-slider8.jpg" alt="" />
-          <img src="./assets/hotel-slider9.jpg" alt="" />
-          <img src="./assets/hotel-slider10.jpg" alt="" />
-        </div>
       </div>
     </section>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal" aria-hidden="true">
+      <div class="modal-content">
+        <button class="close-modal" id="closeModal">&times;</button>
+        <h2 id="modalHotelName">Hotel Name</h2>
+        <form class="booking-form" id="bookingForm">
+          <input id="bk-fullname" type="text" placeholder="Full Name" required />
+          <input id="bk-email" type="email" placeholder="Email Address" required />
+          <input id="bk-phone" type="tel" placeholder="Phone Number" required />
+          <input id="modal-checkin" type="date" placeholder="Check-in Date" required />
+          <input id="modal-checkout" type="date" placeholder="Check-out Date" required />
+          <select id="bk-guests" required>
+            <option value="">Number of Guests</option>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4+ Guests</option>
+          </select>
+          <select id="bk-roomtype" required>
+            <option value="">Room Type</option>
+            <option value="standard">Standard Room</option>
+            <option value="deluxe">Deluxe Room</option>
+            <option value="suite">Suite</option>
+          </select>
+          <textarea id="bk-requests" placeholder="Special Requests (Optional)"></textarea>
+          <button type="submit" class="submit-booking">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Image auto-slider -->
+    <div class="slider">
+      <div class="slide-track">
+        <img src="./assets/hotel-slider1.jpg" alt="" />
+        <img src="./assets/hotel-slider2.jpg" alt="" />
+        <img src="./assets/hotel-slider3.jpg" alt="" />
+        <img src="./assets/hotel-slider4.jpg" alt="" />
+        <img src="./assets/hotel-slider5.jpg" alt="" />
+        <img src="./assets/hotel-slider6.jpg" alt="" />
+        <img src="./assets/hotel-slider7.jpg" alt="" />
+        <img src="./assets/hotel-slider8.jpg" alt="" />
+        <img src="./assets/hotel-slider9.jpg" alt="" />
+        <img src="./assets/hotel-slider10.jpg" alt="" />
+
+        <!-- duplicates for infinite loop -->
+        <img src="./assets/hotel-slider1.jpg" alt="" />
+        <img src="./assets/hotel-slider2.jpg" alt="" />
+        <img src="./assets/hotel-slider3.jpg" alt="" />
+        <img src="./assets/hotel-slider4.jpg" alt="" />
+        <img src="./assets/hotel-slider5.jpg" alt="" />
+        <img src="./assets/hotel-slider6.jpg" alt="" />
+        <img src="./assets/hotel-slider7.jpg" alt="" />
+        <img src="./assets/hotel-slider8.jpg" alt="" />
+        <img src="./assets/hotel-slider9.jpg" alt="" />
+        <img src="./assets/hotel-slider10.jpg" alt="" />
+      </div>
+    </div>
+
     <!-- Footer -->
     <footer class="reveal" id="contact">
       <div class="footer-content">
@@ -217,33 +200,29 @@
 
     <script src="script.js"></script>
     <script>
+      // small reveal observer (keeps your original behaviour)
       const revealElements = document.querySelectorAll(".reveal");
-
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("active");
-            }
+            if (entry.isIntersecting) entry.target.classList.add("active");
           });
         },
-        { threshold: 0.2 }
+        { threshold: 0.15 }
       );
-
       revealElements.forEach((el) => observer.observe(el));
 
-      const slider = document.getElementById("slider3D");
-      const images = slider.querySelectorAll("img");
-
-      const total = images.length;
-      const angle = 360 / total;
-      const radius = 350;
-
-      images.forEach((img, i) => {
-        img.style.transform = `rotateY(${
-          i * angle
-        }deg) translateZ(${radius}px)`;
-      });
+      // defensive slider3D init (only if exists)
+      const slider3D = document.getElementById("slider3D");
+      if (slider3D) {
+        const images = slider3D.querySelectorAll("img");
+        const total = images.length || 1;
+        const angle = 360 / total;
+        const radius = 350;
+        images.forEach((img, i) => {
+          img.style.transform = `rotateY(${i * angle}deg) translateZ(${radius}px)`;
+        });
+      }
     </script>
   </body>
 </html>
