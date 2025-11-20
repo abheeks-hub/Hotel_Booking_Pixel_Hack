@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Comfort Zone — Admin</title>
+    <link rel="stylesheet" href="admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="az-body">
+    <!-- LOGIN (centered modal-like) -->
+    <main id="authScreen" class="auth-screen">
+      <div
+        class="auth-panel glass"
+        role="dialog"
+        aria-labelledby="authTitle"
+        aria-modal="true"
+      >
+        <div class="auth-brand">
+          <div class="logo-mark">CZ</div>
+          <div>
+            <h1 id="authTitle">Comfort Zone — Admin</h1>
+            <p class="muted">Sign in to manage bookings, users and content</p>
+          </div>
+        </div>
+
+        <form id="authForm" class="auth-form" autocomplete="off">
+          <label class="label">Email</label>
+          <input
+            id="adminEmail"
+            type="email"
+            placeholder="admin@comfort.zone"
+            required
+          />
+          <label class="label">Password</label>
+          <input
+            id="adminPassword"
+            type="password"
+            placeholder="password"
+            required
+          />
+          <div
+            class="row"
+            style="justify-content: space-between; align-items: center"
+          >
+            <div class="muted small">
+              Demo creds: <strong>admin@comfort.zone</strong> /
+              <strong>adminpass</strong>
+            </div>
+            <button id="authSubmit" class="btn primary">Log in</button>
+          </div>
+        </form>
+        <div class="auth-foot muted small">
+          This is a demo UI — replace with server auth for production.
+        </div>
+      </div>
+    </main>
+
+    <!-- DASHBOARD (hidden until auth) -->
+    <div id="dashboardApp" class="app-grid hide">
+      <!-- SIDEBAR -->
+      <aside class="sidebar glass">
+        <div class="brand">
+          <div class="logo-circle">CZ</div>
+          <div class="brand-text">
+            <div class="title">Comfort Zone</div>
+            <div class="sub">Admin</div>
+          </div>
+        </div>
+
+        <nav class="side-nav" id="sideNav">
+          <button class="nav-item active" data-page="dashboard">
+            Dashboard
+          </button>
+          <button class="nav-item" data-page="bookings">Bookings</button>
+          <button class="nav-item" data-page="hotels">Hotels</button>
+          <button class="nav-item" data-page="users">Users</button>
+          <button class="nav-item" data-page="contacts">Contacts</button>
+          <button class="nav-item" data-page="settings">Settings</button>
+        </nav>
+
+        <div class="sidebar-foot">
+          <button id="logoutBtn" class="btn danger full">Log out</button>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+        <header class="topbar glass">
+          <div class="left">
+            <button
+              id="sidebarToggle"
+              class="icon-btn"
+              aria-label="Toggle sidebar"
+            >
+              ☰
+            </button>
+            <h1 id="pageTitle">Dashboard</h1>
+          </div>
+          <div class="right">
+            <div class="kpi small">
+              Welcome, <strong id="adminName">Admin</strong>
+            </div>
+          </div>
+        </header>
+
+        <section id="pages" class="pages">
+          <!-- dashboard -->
+          <section id="dashboard" class="page active-page">
+            <div class="kpi-row">
+              <div class="kpi-card">
+                <div class="kpi-value" id="kpiUsers">0</div>
+                <div class="kpi-label">Users</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-value" id="kpiBookings">0</div>
+                <div class="kpi-label">Bookings</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-value" id="kpiRevenue">₹0</div>
+                <div class="kpi-label">Revenue</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-value" id="kpiMessages">0</div>
+                <div class="kpi-label">Messages</div>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="card">
+                <div class="card-head">
+                  <h3>Recent Bookings</h3>
+                  <div>
+                    <button id="exportBookings" class="btn ghost">
+                      Export CSV
+                    </button>
+                  </div>
+                </div>
+                <div id="recentBookingsWrap" class="table-wrap"></div>
+              </div>
+
+              <div class="card">
+                <h3>Quick Actions</h3>
+                <div class="stack">
+                  <div class="row">
+                    <button id="seedMock" class="btn primary">
+                      Seed Demo Data
+                    </button>
+                    <button id="resetMock" class="btn danger">
+                      <strong>Reset Data</strong>
+                    </button>
+                  </div>
+                  <div class="row">
+                    <button id="openUsers" class="btn">Manage Users</button>
+                    <button id="openHotels" class="btn">Manage Hotels</button>
+                  </div>
+                  <div class="muted small">Tip: export CSVs for testing.</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- bookings -->
+          <section id="bookings" class="page">
+            <div class="card">
+              <div class="card-head">
+                <h3>Bookings</h3>
+                <div>
+                  <input
+                    id="bookingSearch"
+                    placeholder="Search bookings..."
+                    class="search"
+                  />
+                  <button id="exportAllBookings" class="btn ghost">
+                    Export CSV
+                  </button>
+                </div>
+              </div>
+              <div id="bookingsTable" class="table-wrap"></div>
+            </div>
+          </section>
+
+          <!-- hotels -->
+          <section id="hotels" class="page">
+            <div class="card">
+              <div class="card-head">
+                <h3>Hotels</h3>
+                <div>
+                  <button id="addHotelBtn" class="btn primary">
+                    Add Hotel
+                  </button>
+                  <button id="exportHotels" class="btn ghost">
+                    Export CSV
+                  </button>
+                </div>
+              </div>
+              <div id="hotelsTable" class="table-wrap"></div>
+            </div>
+          </section>
+
+          <!-- users -->
+          <section id="users" class="page">
+            <div class="card">
+              <div class="card-head">
+                <h3>Users</h3>
+                <div>
+                  <button id="addUserBtn" class="btn primary">Add User</button>
+                  <button id="exportUsers" class="btn ghost">Export CSV</button>
+                </div>
+              </div>
+              <div id="usersTable" class="table-wrap"></div>
+            </div>
+          </section>
+
+          <!-- contacts -->
+          <section id="contacts" class="page">
+            <div class="card">
+              <div class="card-head">
+                <h3>Contact Messages</h3>
+                <div>
+                  <button id="clearContacts" class="btn danger">
+                    Clear All
+                  </button>
+                  <button id="exportContacts" class="btn ghost">
+                    Export CSV
+                  </button>
+                </div>
+              </div>
+              <div id="contactsTable" class="table-wrap"></div>
+            </div>
+          </section>
+
+          <!-- settings -->
+          <section id="settings" class="page">
+            <div class="card">
+              <h3>Settings</h3>
+              <div class="stack">
+                <label>Admin email</label>
+                <input id="settingAdminEmail" />
+                <div class="row">
+                  <button id="saveSettings" class="btn primary">Save</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <!-- CRUD Modal (single) -->
+    <div id="crudModal" class="modal-root small">
+      <div class="modal-panel glass">
+        <h3 id="crudTitle">Modal</h3>
+        <form id="crudForm" class="stack"></form>
+        <div class="row" style="justify-content: flex-end; margin-top: 8px">
+          <button id="crudSave" class="btn primary">Save</button>
+          <button id="crudCancel" class="btn ghost" type="button">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toasts" class="toasts"></div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
